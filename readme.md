@@ -1,6 +1,10 @@
 # Inicio
 Olá, criei esse repositório com a intenção de guardar meus arquivos de configuração e para outras pessoas poderem usar elas também. Elas ainda estão bem simples mas pra mim é o suficiente.
-## Instalação
+
+### Requisitos
+Antes de usar o script, é necessário ter os pacotes **nodejs** e **npm** instalados em seu sistema. Caso use debian/debian based ou ubuntu based use o apt, para fedora, use o dnf, e para arch e arch baseds use o pacman para instalar
+
+### Instalação
 Para instalar as dotfiles nos seus programas é bem simples: apenas execute isso
 > git clone https://github.com/ArdonyxOAgiota/dotfiles.git && cd dotfiles <br>
 
