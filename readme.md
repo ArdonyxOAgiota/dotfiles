@@ -8,7 +8,7 @@ Antes de usar o script, é necessário ter os pacotes **nodejs** e **npm** insta
 Ao seguir os passos abaixo seus arquivos de configuração atuais serão deletadas!
 
 ### Instalação
-Para instalar os arquivos e instala-los no seus programas é bem simples: apenas execute isso
+Para baixar os arquivos e instala-los no seus programas é bem simples: apenas execute isso
 > git clone https://github.com/ArdonyxOAgiota/dotfiles.git && cd dotfiles <br>
 
 
