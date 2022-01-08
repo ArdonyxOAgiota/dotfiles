@@ -21,4 +21,5 @@ Assim, você vai marcar o script de instalação como executavel e vai executa-l
 
 ### Contato
 discord: ArdonyxAgiota#3905
+
 element: ardonyxoagiota:matrix.org
