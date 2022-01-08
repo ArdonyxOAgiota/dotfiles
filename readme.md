@@ -18,3 +18,7 @@ E, após baixar o repo com git clone e entrar com o cd, execute:
 > chmod +x install.sh && ./install.sh <br>
 
 Assim, você vai marcar o script de instalação como executavel e vai executa-lo. Quando fizer isso, apenas espere o script botar os arquivos onde eles devem estar, e tudo deve funcionar perfeitamente. Caso queria ver o source-code do script, [aqui](https://github.com/ArdonyxOAgiota/dotfiles/blob/master/install.sh) está. Boa sorte e espero que goste dos resultados! :)
+
+### Contato
+discord: ArdonyxAgiota#3905
+element: ardonyxoagiota:matrix.org
