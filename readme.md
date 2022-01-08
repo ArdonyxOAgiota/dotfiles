@@ -2,7 +2,7 @@
 Olá, criei esse repositório com a intenção de guardar meus arquivos de configuração e para outras pessoas poderem usar eles também. Eles ainda estão bem simples mas pra mim é o suficiente.
 
 ### Requisitos
-Antes de usar o script, é necessário ter os pacotes **nodejs** e **npm** instalados em seu sistema. Caso use debian/debian based ou ubuntu based use o apt, para fedora, use o dnf, e para arch e arch baseds use o pacman para instalar.
+Antes de usar o script, é necessário ter os pacotes **nodejs** e **npm** instalados em seu sistema para a extensão coc.nvim funcionar. Caso use debian/debian based ou ubuntu based use o apt, para fedora, use o dnf, e para arch e arch baseds use o pacman para instalar.
 
 Para ter ícones em uma extensão do neovim, você deve instalar a nerd-fonts-complete. Para instalar no arch ou em arch baseds, use algum AUR helper e instale o pacote **nerd-fonts-complete**.
 
