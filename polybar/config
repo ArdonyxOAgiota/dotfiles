@@ -1,4 +1,4 @@
-;==========================================================
+	;==========================================================
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -17,7 +17,16 @@
 ;==========================================================
 
 [colors]
-background = #212121
+background = #00000000
+#302c34
+#272838
+#191516
+#236, 30, 22
+#020202
+;#00000000
+;#2e3440
+#303444
+#212121
 #2E3440
 buffer = #4c566a
 foreground = #D8DEE9
@@ -32,13 +41,14 @@ success = #A3BE8C
 function = #B48EAD
 
 [bar/mybar]
+enable-ipc = true
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
+width = 94%
 height = 27
-;offset-x = 1%
+offset-x = 2.7%
 ;offset-y = 1%
-radius = 6.0
-fixed-center = false
+radius = 5.0
+;fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -50,23 +60,25 @@ border-size = 4
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 0
 
 font-0 = Hack Nerd Font:pixelsize=9;3
 ;font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=9;3
-font-1 = JetBrainsMono Nerd Font:size=9;4
+;font-1 = JetBrainsMono Nerd Font:size=9;4
+font-1 = Font Awesome 5 Free:size=10;1
 font-2 = Material Design Icons:style=Bold:size=9;3
 ;font-3 = MononokiNerdFont:size=14;3
 font-3 = Hack Nerd Font:style=Regular:pixelsize=10;2
 
-
-modules-left = linux bspwm i3
-modules-center = pulseaudio
-modules-right = xbacklight memory cpu battery temperature date
-
+modules-left = linux
+;previous playpause next
+modules-center = bspwm
+;spotify
+modules-right = xbacklight memory cpu battery date pulseaudio
+;temperature 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -84,6 +96,64 @@ tray-padding = 2
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/mpv]
+type = custom/script
+exec = /home/Nyx/mpv_module.sh
+tail = true
+label = %output%
+label-maxlen = 70
+label-padding = 1
+label-foreground = ${colors.yellow2}
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-padding = 1
+
+[module/previous]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo " 玲 "
+click-left = "spotifyctl -q previous"
+format-background = 8, 64, 100
+#f55d3e
+format-foreground = 020202
+
+[module/next]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo " 怜 "
+click-left = "spotifyctl -q next"
+format-background = f55d3e
+format-foreground = 020202
+
+[module/playpause]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo "  "
+; Paused
+hook-2 = echo "  "
+click-left = "spotifyctl -q playpause"
+format-background = f55d3e
+format-foreground = 020202
+
+[module/spotify]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing/paused show song name and artist
+hook-1 = spotifyctl -q status --format '  %title% '
+format-background = f55d3e
+format-foreground = 020202
 
 [module/xwindow]
 type = internal/xwindow
@@ -117,9 +187,10 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/linux]
 type = custom/text
-content = "  Arch Linux"
-content-foreground = #1793d1
-content-underline = #1793d1
+content = "  Arch Linux "
+content-background = #1793d1
+content-foreground = 020202
+;content-underline = #1793d1
 
 
 [module/bspwm]
@@ -135,9 +206,12 @@ reverse-scroll = true
 wrapping-scroll = false
 
 format = <label-state>
-ws-icon-0=  I;%{F#56B6C2}
-ws-icon-1 = II;%{F#E06C75}
+ws-icon-0=  I;%{F#56B6C2}ﲵ
+;
+ws-icon-1 = II;%{F#E06C75}
+;
 ws-icon-2 = III;%{F#E5C07B}
+#
 ws-icon-3 = IV;%{F#BBFF00}
 ws-icon-4 = V;%{F#ABB2BF}
 ws-icon-5 = VI;%{F#889294}
@@ -245,18 +319,29 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #ae0001
-label = CPU %percentage:2%%
+format-prefix = "  "
+format-prefix-background = #ffd166
+format-prefix-foreground = #020202
+#ed5858
+#ae0001
+label = " %percentage:2%% "
+label-background = #f4d6cc
+label-foreground = #020202
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "﬙ "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #740001
-label = RAM %percentage_used%%
+format-prefix = " ﬙ "
+format-prefix-foreground = #020202
+#${colors.foreground-alt}
+;format-underline = #7ea172 
+#65c387
+#d17b71
+#740001
+format-prefix-background = #ef476f
+label = " %percentage_used%% "
+label-background = #f4d6cc
+label-foreground = #020202
 
 [module/wlan]
 #type = internal/network
@@ -306,32 +391,51 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #000000
+format-prefix = "  " 
+;"  "
+;
+format-prefix-background = #118ab2
+format-prefix-foreground = #020202
+;format-underline = #da426e
+#74ad80
+;#7bc98b
 
-label = %date% %time%
+label = "%date% %time% "
+label-background = #f4d6cc
+label-foreground = #020202
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume =  
-label-volume-foreground = ${root.foreground}
+format-volume = <label-muted><label-volume>
+;<bar-volume>
+label-volume = " %percentage% "
+label-unmuted = " 墳"
+label-unmuted-foreground = 020202
+label-unmuted-background = #c59b76
+#f4d6cc
 
-label-muted = 🔇 muted
-label-muted-foreground = #666
+;墳 
+label-volume-foreground = 020202
+label-volume-background = #f4d6cc
+label-muted = " 墳 "
+label-muted-foreground = #020202
+label-muted-background = 7fb285
+;36B344
+#ee6c4d
+#048ba8
+#f29e4c
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-width = 11
+bar-volume-foreground-0 = #00FFFF
+bar-volume-foreground-1 = #00FFFF
+bar-volume-foreground-2 = #00FFFF
+bar-volume-foreground-3 = #00FFFF
+bar-volume-foreground-4 = #00FFFF
+bar-volume-foreground-5 = #FFFF00
+bar-volume-foreground-6 = #FF0000
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
@@ -373,39 +477,55 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #eeba30
+format-charging = <animation-charging><label-charging>
+label-charging-background = #f4d6cc
+label-charging-foreground = #020202
+label-charging = " %percentage%% "
+;format-charging-underline = #ffffff
+#edaa58
+;#eeba30
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging = <animation-discharging><label-discharging> 
+label-discharging-background = #f4d6cc
+label-discharging-foreground = #020202
+label-discharging = " %percentage%% "
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-discharging-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = " " 
-ramp-capacity-1 = " " 
-ramp-capacity-2 = "" 
-ramp-capacity-3 = "" 
-ramp-capacity-4 = " "
-ramp-capacity-foreground = ${colors.foreground-alt}
+format-full-prefix = "  "
+format-full = " 100% " 
+format-full-prefix-foreground = #020202
+format-full-prefix-background = #06d6a0
+format-full-background = #f4d6cc
+format-full-foreground = 020202
+;format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = "    " 
+ramp-capacity-1 = "    " 
+ramp-capacity-2 = "    " 
+ramp-capacity-3 = "    " 
+ramp-capacity-4 = "    "
+ramp-capacity-foreground = #020202
+ramp-capacity-background = #06d6a0
 
 
-animation-charging-0 = " " 
-animation-charging-1 = " " 
-animation-charging-2 = " " 
-animation-charging-3 = " " 
-animation-charging-4 = " "
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-0 = "  " 
+animation-charging-1 = "  " 
+animation-charging-2 = "  " 
+animation-charging-3 = "  " 
+animation-charging-4 = "  "
+animation-charging-foreground = #020202
+animation-charging-background = #06d6a0
 animation-charging-framerate = 750
 
-animation-discharging-0 = " "
-animation-discharging-1 = " "
-animation-discharging-2 = " "
-animation-discharging-3 = " "
-animation-discharging-4 = " "
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-0 = "  "
+animation-discharging-1 = "  "
+animation-discharging-2 = "  "
+animation-discharging-3 = "  "
+animation-discharging-4 = "  "
+animation-discharging-foreground = #020202
 animation-discharging-framerate = 750
+animation-discharging-background = #06d6a0
 
 [module/temperature]
 type = internal/temperature
@@ -413,7 +533,9 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #d3a625
+format-underline = #e897b8
+#edc858
+;#d3a625
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 

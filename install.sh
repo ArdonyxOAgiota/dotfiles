@@ -8,7 +8,7 @@ while true; do
         * ) echo "";;
     esac
 done
-bash -c "mv polybar/config ~/.config/polybar"
+bash -c "mv polybar/config ~/.config/polybar/config"
 bash -c "mkdir ~/.config/alacritty && mkdir ~/.config/nvim"
 bash -c " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-bash -c "cp alacritty/alacritty.yml ~/.config/alacritty && cp nvim/init.vim ~/.config/nvim"
+bash -c "cp alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml && cp nvim/init.vim ~/.config/nvim/init.vim"
