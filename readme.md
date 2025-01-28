@@ -1,3 +1,6 @@
+# Repositório desativado
+config atual: https://codeberg.org/Ardonyx/dotfiles
+
 # Inicio
 Olá, criei esse repositório com a intenção de guardar meus arquivos de configuração e para outras pessoas poderem usar eles também. Eles ainda estão bem simples mas pra mim é o suficiente.
 
